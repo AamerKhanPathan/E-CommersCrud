@@ -25,25 +25,31 @@ public class UserController {
         log.info("entering create user Controller");
 
        User save= this.service.createUser(user);
-log.info("user created successfully");
+       log.info("user created successfully");
        return  new ResponseEntity<User>(save,HttpStatus.OK);
 
     }
 
     @DeleteMapping("deleteUser/{userId}")
     public ResponseEntity<User> deleteUser(@PathVariable Long userId){
+        log.info("entering in deleteUser Controller");
+
+        log.info("trying to find user");
         User finduser = this.service.finduser(userId);
 
 
         this.service.deleteUser(finduser);
-
+        log.info("User deleted successfully");
        return new ResponseEntity<User>(finduser,HttpStatus.OK);
 
     }
 
     @GetMapping("/getUser/{userId}")
     public ResponseEntity<User> getUser(@PathVariable Long userId){
+        log.info("entering in getUser Controller");
         User finduser = this.service.finduser(userId);
+
+        log.info("find user successfully");
         return  new ResponseEntity<User>(finduser,HttpStatus.OK);
     }
 
